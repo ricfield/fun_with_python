@@ -31,7 +31,7 @@ for i in range(1, MAX_COMPARISONS):
    if int(user_input[1]) == pick_3_numbers[1] and int(user_input[2]) == pick_3_numbers[2]:
       print("BACK MATCH FOUND AT DRAW " + str(i))
 
-   if int(user_input[0]) == pick_3_numbers[0] and int(user_input[1]) == user_input[1]:
+   if int(user_input[0]) == pick_3_numbers[0] and int(user_input[1]) == pick_3_numbers[1]:
       print("FRONT MATCH FOUND AT DRAW " + str(i))
                                                                                                 
      
