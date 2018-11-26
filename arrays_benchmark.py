@@ -10,44 +10,56 @@ result = [[0] * columns] * rows
 start_time = 0
 end_time = 0
 start_time = time.time()
-debug = False
 
-print("Starting time value: " + str(start_time))
 
-for k in range(rows - 1):
+def main():
 
-   if k % 100 == 0:
-      print("\nWriting random values to row " + str(k + 1) + " in array_a and array_b...")
-      
+
+   print("Starting time value: " + str(start_time))
+
+   print("\nWriting values to array_a")
+   writeRandomArrayValues(array_a, rows, columns, range_beginning, range_end) 
+
+   print("\nWriting values to array_b")
+   writeRandomArrayValues(array_b, rows, columns, range_beginning, range_end)
    
-   for l in range(columns - 1):
-      array_a[k][l] = random.randint(range_beginning, range_end)
-      array_b[k][l] = random.randint(range_beginning, range_end)
+   print("\nDone writing values to array_a and array_b.)\n")
 
-      if debug == True and l % 1000 == 0 and k % 100 == 0:
-         print(str(array_a[k][l]) + "," + str(array_b[k][l]))
-
-print("Done writing values to array_a and array_b.)\n")
+   print("\nAdding array_a to array_b...")
 
 
-print("Adding array_a to array_b...")
+   addArrays(array_a, array_b)
+   
+  	  	    
+   end_time = time.time()
 
-for i in range(rows - 1):
+   print("Ending time value: " + str(end_time))
+   print("Total Time: " + str(end_time - start_time))	  
 
 
-   for j in range(columns - 1):
-      result[i][j] =  array_a[i][j] + array_b[i][j]
+def addArrays(array1, array2):
+
+   for i in range(rows - 1):
+
+
+      for j in range(columns - 1):
+         result[i][j] =  array1[i][j] + array2[i][j]
       
-   if i % 100 == 0:
-      print("Processed row " + str(i + 1) + "...")
+      if i % 100 == 0:
+         print("Processed row " + str(i + 1) + "...")
 
-      if debug == True:
-         print("array_a[" + str(i) + "][" + str(j) + "] = " + str(array_a[i][j]))
-         print("array_b[" + str(i) + "][" + str(j) + "] = " + str(array_b[i][j]))
-         print("result[" + str(i) + "][" + str(j) + "] = " + str(result[i][j]) + "\n") 
 
-          	  	    
-end_time = time.time()
+def writeRandomArrayValues(array, numRows, numColumns, randIntBegin, randIntEnd):
+   for k in range(numRows - 1):
+                                                                                                                                                                                                                                                                                                               
+      if k % 100 == 0:                                                                                                                                                   
+         print("\nWriting random values to row " + str(k + 1))                                                                            
+                                                                                                                                                                                                                                                                                                                                            
+      for l in range(numColumns - 1):                                                                                                                             
+         array[k][l] = random.randint(randIntBegin, randIntEnd)                        
+                                                                                                                                                                                                                                                      
+         
+if __name__ == '__main__':
+   main()
 
-print("Ending time value: " + str(end_time))
-print("Total Time: " + str(end_time - start_time))	  
+
